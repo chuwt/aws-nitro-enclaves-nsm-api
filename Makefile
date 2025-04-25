@@ -35,6 +35,13 @@ nsm-api-${STABLE}: .build-${HOST_MACHINE}-${STABLE}
 		${CONTAINER_TAG}-${STABLE} \
 		/bin/bash -c "cargo build && cargo test --all"
 
+nsm-python: .build-${HOST_MACHINE}-stable
+	docker run \
+		--rm \
+		-v ${SRC_PATH}/target:/build/target \
+		${CONTAINER_TAG}-stable \
+		/bin/bash -c "cargo build --release --manifest-path /build/nsm-lib/Cargo.toml"
+
 nsm-api-${NIGHTLY}: .build-${HOST_MACHINE}-${NIGHTLY}
 	docker run \
 		${CONTAINER_TAG}-${NIGHTLY} \

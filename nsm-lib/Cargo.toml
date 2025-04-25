@@ -12,6 +12,10 @@ serde_bytes = "0.11"
 [build-dependencies]
 cbindgen = { version = "0.24", default-features = false }
 
+[dependencies.cpython]
+version = "0.5"
+features = ["extension-module"]
+
 [lib]
 name = "nsm"
 path = "src/lib.rs"

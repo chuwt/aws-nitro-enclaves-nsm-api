@@ -11,5 +11,7 @@ RUN yum install -y ca-certificates gcc libc6-dev && \
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --default-toolchain ${RUST_VERSION} && \
 	rm -rf /var/lib/apt/lists/*
 
+RUN yum install -y python3-devel
+
 ADD . /build
 WORKDIR /build 
